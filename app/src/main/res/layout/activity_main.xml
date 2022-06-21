@@ -4,15 +4,233 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home"
     tools:context=".MainActivity">
 
+    //Kolom Asam Urat
+
+    <Button
+        android:id="@+id/PolaAsamUrat"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Pola Makan"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/DetailAsamUrat"
+        app:layout_constraintEnd_toStartOf="@+id/DetailAsamUrat"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/DetailAsamUrat" />
+
+    <Button
+        android:id="@+id/DetailAsamUrat"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Selengkapnya"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.357" />
+
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/roboto_bold"
+        android:text="Asam Urat"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ValueAsamurat"
+        app:layout_constraintEnd_toEndOf="@+id/PolaAsamUrat"
+        app:layout_constraintStart_toStartOf="@+id/PolaAsamUrat"
+        app:layout_constraintTop_toTopOf="@+id/ValueAsamurat" />
 
+    <TextView
+        android:id="@+id/ValueAsamurat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="-"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/DetailAsamUrat"
+        app:layout_constraintEnd_toEndOf="@+id/DetailAsamUrat"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="@+id/DetailAsamUrat"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893" />
+
+    //Kolom Diabetes
+
+    <Button
+        android:id="@+id/PolaDiabetes"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Pola Makan"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/DetailDiabetes"
+        app:layout_constraintEnd_toStartOf="@+id/DetailDiabetes"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/DetailDiabetes" />
+
+    <Button
+        android:id="@+id/DetailDiabetes"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Selengkapnya"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/DetailAsamUrat"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.578" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Diabetes"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ValueDiabetes"
+        app:layout_constraintEnd_toEndOf="@+id/PolaDiabetes"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="@+id/PolaDiabetes"
+        app:layout_constraintTop_toTopOf="@+id/ValueDiabetes"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/ValueDiabetes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="-"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/DetailDiabetes"
+        app:layout_constraintEnd_toEndOf="@+id/DetailDiabetes"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/DetailDiabetes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.937" />
+
+    //Kolom Kolestrol
+
+    <Button
+        android:id="@+id/PolaKolestrol"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Pola Makan"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/DetailKolestrol"
+        app:layout_constraintEnd_toStartOf="@+id/DetailKolestrol"
+        app:layout_constraintHorizontal_bias="0.946"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/DetailKolestrol" />
+
+    <Button
+        android:id="@+id/DetailKolestrol"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Selengkapnya"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/DetailDiabetes"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.793" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Kolestrol"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/ValueKolestrol"
+        app:layout_constraintEnd_toEndOf="@+id/PolaKolestrol"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="@+id/PolaKolestrol"
+        app:layout_constraintTop_toTopOf="@+id/ValueKolestrol"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ValueKolestrol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="-"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/DetailKolestrol"
+        app:layout_constraintEnd_toEndOf="@+id/DetailKolestrol"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/DetailKolestrol"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.953" />
+
+    <TextView
+        android:id="@+id/txtNamaPengguna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Patrick Star"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.698" />
 </androidx.constraintlayout.widget.ConstraintLayout>

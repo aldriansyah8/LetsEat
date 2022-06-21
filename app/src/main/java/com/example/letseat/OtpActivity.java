@@ -40,7 +40,7 @@ public class OtpActivity extends AppCompatActivity {
             }
         });
 
-        //Tombol
+        //Tombol Resend OTP
         bResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,16 +10,46 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsEat">
         <activity
+            android:name=".PolaKolestrolPlus"
+            android:exported="false" />
+        <activity
+            android:name=".PolaKolestrolNormal"
+            android:exported="false" />
+        <activity
+            android:name=".PolaAsamuratPlus"
+            android:exported="false" />
+        <activity
+            android:name=".PolaAsamuratNormal"
+            android:exported="false" />
+        <activity
+            android:name=".PolaDiabetesPlus"
+            android:exported="false" />
+        <activity
+            android:name=".PolaDiabetesNormal"
+            android:exported="false" />
+        <activity
+            android:name=".PolaKolestrolMinus"
+            android:exported="false" />
+        <activity
+            android:name=".PolaAsamuratMinus"
+            android:exported="false" />
+        <activity
+            android:name=".PolaDiabetesMinus"
+            android:exported="false" />
+        <activity
+            android:name=".AboutKolestrol"
+            android:exported="false" />
+        <activity
+            android:name=".AboutDiabetes"
+            android:exported="false" />
+        <activity
+            android:name=".AboutAsamUrat"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="false" />
-        <activity
-            android:name=".OtpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +58,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".OtpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

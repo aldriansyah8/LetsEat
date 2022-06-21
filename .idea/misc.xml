@@ -5,10 +5,24 @@
       <map>
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/drawable/custom_input.xml" value="0.11200000000000002" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/drawable/ic_button_otp.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_about_asam_urat.xml" value="0.4" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_about_diabetes.xml" value="0.264" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_about_kolestrol.xml" value="0.4" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_otp.xml" value="0.264" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_asamurat_minus.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_asamurat_normal.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_asamurat_plus.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_diabetes_minus.xml" value="0.264" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_diabetes_normal.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_diabetes_plus.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_kolestrol_minus.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_kolestrol_normal.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_kolestrol_plus.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_signup.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_splash_screen.xml" value="0.13020833333333334" />
       </map>
     </option>
   </component>
@@ -17,5 +31,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
