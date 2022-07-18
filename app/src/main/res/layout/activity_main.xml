@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="-"
+        android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/DetailAsamUrat"
         app:layout_constraintEnd_toEndOf="@+id/DetailAsamUrat"
@@ -138,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="-"
+        android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/DetailDiabetes"
         app:layout_constraintEnd_toEndOf="@+id/DetailDiabetes"
@@ -190,6 +190,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.793" />
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="367dp"
+        android:layout_height="51dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.93" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -209,7 +230,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
-        android:text="-"
+        android:text=""
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/DetailKolestrol"
         app:layout_constraintEnd_toEndOf="@+id/DetailKolestrol"
@@ -224,13 +245,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_bold"
         android:text="Patrick Star"
+        android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:textAlignment="textStart"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.729" />
 </androidx.constraintlayout.widget.ConstraintLayout>

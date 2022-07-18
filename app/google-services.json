@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "36231076432",
+    "firebase_url": "https://ta-khalisy-wanda-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ta-khalisy-wanda",
+    "storage_bucket": "ta-khalisy-wanda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36231076432:android:9069b357569ba3b3650f55",
+        "android_client_info": {
+          "package_name": "com.example.letseat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36231076432-4clehgnij3n02flqbluvqo4p0srlddj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCONpAPmUuOZT0X9iA5fAJkc-tGWf1HTjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36231076432-4clehgnij3n02flqbluvqo4p0srlddj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
