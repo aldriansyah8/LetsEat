@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity {
                 // method ini akan di eksekusi setelah timer SELESAI
 
                 // start Main activity
-                Intent i = new Intent(SplashScreen.this, SignUpActivity.class);
+                Intent i = new Intent(SplashScreen.this, SignInActivity.class);
 
                 startActivity(i);
                 // tutup activity ini

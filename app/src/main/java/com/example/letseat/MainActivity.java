@@ -1,5 +1,8 @@
 package com.example.letseat;
 
+import static com.example.letseat.SignInActivity.newuser;
+import static com.example.letseat.SignInActivity.usernm;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,13 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,14 +21,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnPolaAsamurat, btnPolaDiabetes, btnPolaKolestrol,
-            btnDetailAsamurat, btnDetailDiabetes, btnDetailKolestrol, btnLogout;
+    private Button btnPolaAsamurat, btnPolaDiabetes, btnPolaKolestrol, btnScan,
+            btnDetailAsamurat, btnDetailDiabetes, btnDetailKolestrol, btnRiwayat;
 
-    private TextView valDiabet,valAsamurat,valKolestrol,txtUser;
-    float ValueAsamurat,ValueDiabetes,ValueKolestrol;
-    public static EditText txtemail,txtpassword;
-
-    protected static String usernm, newuser;
+    private TextView valDiabet,valAsamurat,valKolestrol,txtUser,resAsamUrat,resDiabetes,resKolestrol;
+    public float ValueAsamurat,ValueDiabetes,ValueKolestrol;
+    //public static EditText txtemail,txtpassword;
+    //protected static String usernm, newuser;
     private FirebaseAuth mAuth;
 
     @Override
@@ -40,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        resAsamUrat = findViewById(R.id.ResultAsamUrat);
+        resDiabetes = findViewById(R.id.ResultDiabetes);
+        resKolestrol = findViewById(R.id.ResultKolestrol);
         txtUser = findViewById(R.id.txtNamaPengguna);
         btnDetailAsamurat = findViewById(R.id.DetailAsamUrat);
         btnDetailDiabetes = findViewById(R.id.DetailDiabetes);
@@ -47,10 +47,28 @@ public class MainActivity extends AppCompatActivity {
         btnPolaDiabetes = findViewById(R.id.PolaDiabetes);
         btnPolaAsamurat = findViewById(R.id.PolaAsamUrat);
         btnPolaKolestrol = findViewById(R.id.PolaKolestrol);
-        btnLogout = findViewById(R.id.logout);
+        btnRiwayat = findViewById(R.id.riwayat);
+        btnScan = findViewById(R.id.scan);
         valDiabet = findViewById(R.id.ValueDiabetes);
         valAsamurat = findViewById(R.id.ValueAsamurat);
         valKolestrol = findViewById(R.id.ValueKolestrol);
+
+        //Nama Pengguna
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("user").child(newuser).child("name");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                usernm  = snapshot.getValue(String.class);
+                txtUser.setText(usernm + " !");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         //Button Selengkapnya Asam Urat
         btnDetailAsamurat.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(MainActivity.this, HistoryActivity.class);
+                startActivity(i);
+            }
+        });
+
         //Button Selengkapnya Kolestrol
         btnDetailKolestrol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,18 +106,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getScanner();
+            }
+        });
+
         getValAsamUrat();
         getValDiabetes();
         getValKolestrol();
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
 
-                logoutAccount();
-            }
-        });
+    }
+
+    private void getScanner(){
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        DatabaseReference myRef = database.getReference("user").child(newuser).child("history")
+                                .child("Asam Urat");
+        myRef.setValue(ValueAsamurat);
+
+        myRef = database.getReference("user").child(newuser).child("history").child("Diabetes");
+        myRef.setValue(ValueDiabetes);
+
+        myRef = database.getReference("user").child(newuser).child("history").child("Kolestrol");
+        myRef.setValue(ValueKolestrol);
 
     }
 
@@ -104,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 ValueAsamurat = snapshot.getValue(Integer.class);
+                resAsamUrat.setText(String.valueOf(ValueAsamurat));
 
                 if (ValueAsamurat <= 2) {
                     valAsamurat.setText("Rendah");
@@ -147,11 +190,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref = database.getReference("reading").child("gulaDarah");
 
+
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 ValueDiabetes = snapshot.getValue(Integer.class);
+                resDiabetes.setText(String.valueOf(ValueDiabetes));
 
                 if (ValueDiabetes <= 70) {
                     valDiabet.setText("Rendah");
@@ -195,11 +240,13 @@ public class MainActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myref = database.getReference("reading").child("kolestrol");
 
+
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 ValueKolestrol = snapshot.getValue(Integer.class);
+                resKolestrol.setText(String.valueOf(ValueKolestrol));
 
                 if (ValueKolestrol <= 200) {
                     valKolestrol.setText("Rendah");
@@ -237,20 +284,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void logoutAccount (){
-        mAuth.signOut();
-            Intent intent
-                    = new Intent(MainActivity.this, SignInActivity.class);
-            startActivity(intent);
-
-            Toast.makeText(getApplicationContext(), "Log out berhasil", Toast.LENGTH_LONG)
-                    .show();
-
-                }
-
-
-        }
+}
 
 
 

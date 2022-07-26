@@ -191,25 +191,46 @@
         app:layout_constraintVertical_bias="0.793" />
 
     <Button
-        android:id="@+id/logout"
-        android:layout_width="367dp"
-        android:layout_height="51dp"
+        android:id="@+id/riwayat"
+        android:layout_width="150dp"
+        android:layout_height="54dp"
         android:backgroundTint="@color/orange"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
-        android:text="Logout"
+        android:text="Riwayat"
         android:textAllCaps="false"
         android:textSize="12sp"
         android:textStyle="normal"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.886"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
+        app:layout_constraintVertical_bias="0.924" />
+
+    <Button
+        android:id="@+id/scan"
+        android:layout_width="150dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="Scan"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923" />
 
     <TextView
         android:id="@+id/textView4"
@@ -243,15 +264,53 @@
         android:id="@+id/txtNamaPengguna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoText="false"
         android:fontFamily="@font/roboto_bold"
         android:text="Patrick Star"
-        android:textAlignment="textStart"
+        android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.376"
+        app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.724" />
+
+    <TextView
+        android:id="@+id/ResultAsamUrat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="value"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/DetailAsamUrat"
+        app:layout_constraintEnd_toEndOf="@+id/ValueAsamurat"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@+id/ValueAsamurat"
+        app:layout_constraintTop_toBottomOf="@+id/ValueAsamurat"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ResultDiabetes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="value"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/DetailDiabetes"
+        app:layout_constraintEnd_toEndOf="@+id/ValueDiabetes"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/ValueDiabetes"
+        app:layout_constraintTop_toBottomOf="@+id/ValueDiabetes"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/ResultKolestrol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="value"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/DetailKolestrol"
+        app:layout_constraintEnd_toEndOf="@+id/ValueKolestrol"
+        app:layout_constraintStart_toStartOf="@+id/ValueKolestrol"
+        app:layout_constraintTop_toBottomOf="@+id/ValueKolestrol" />
 </androidx.constraintlayout.widget.ConstraintLayout>
