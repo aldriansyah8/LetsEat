@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 public class PolaAsamuratNormal extends AppCompatActivity {
 
     private ImageView btnBack;
-    private TextView txtUser;
+    private TextView txtUserTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class PolaAsamuratNormal extends AppCompatActivity {
         setContentView(R.layout.activity_pola_asamurat_normal);
 
         btnBack = findViewById(R.id.bBackAsamuratNormal);
-        txtUser = findViewById(R.id.txtUserAsamuratNormal);
+        txtUserTV = findViewById(R.id.txtUserAsamuratNormal);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,13 +40,13 @@ public class PolaAsamuratNormal extends AppCompatActivity {
         });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("user").child(newuser).child("name");
+        DatabaseReference myRef = database.getReference("user").child(newuser);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                usernm  = snapshot.getValue(String.class);
-                txtUser.setText(usernm + " !");
+                usernm  = snapshot.child("name").getValue(String.class);
+                txtUserTV.setText(usernm + " !");
             }
 
             @Override
