@@ -35,7 +35,7 @@ public class HistoryActivity extends AppCompatActivity {
         mbase = FirebaseDatabase.getInstance().getReference("user").child(newuser).child("history");
 
         recyclerView = findViewById(R.id.historyUser_rc);
-        // To display the Recycler view linearlly
+        // To display the Recycler view linearly
 
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this));
