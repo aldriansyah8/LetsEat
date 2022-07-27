@@ -40,7 +40,7 @@ public class HistoryActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(this));
 
-        // It is a class provide by the FirebaseUI to make a
+        // It is a class provide by the FirebaseUI to mke a
         // query in the database to fetch appropriate data
         FirebaseRecyclerOptions<History> options
                 = new FirebaseRecyclerOptions.Builder<History>()
