@@ -1,7 +1,12 @@
 package com.example.letseat;
 
+import static com.example.letseat.SignInActivity.formattedDate;
 import static com.example.letseat.SignInActivity.newuser;
 import static com.example.letseat.SignInActivity.usernm;
+import static com.example.letseat.SignInActivity.asamUrat;
+import static com.example.letseat.SignInActivity.diabetes;
+import static com.example.letseat.SignInActivity.colestrol;
+import static com.example.letseat.SignInActivity.status;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,15 +25,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btnPolaAsamurat, btnPolaDiabetes, btnPolaKolestrol, btnScan,
             btnDetailAsamurat, btnDetailDiabetes, btnDetailKolestrol, btnRiwayat;
-
-    private TextView valDiabet,valAsamurat,valKolestrol,txtUser,resAsamUrat,resDiabetes,resKolestrol;
-    public float ValueAsamurat,ValueDiabetes,ValueKolestrol;
-    //public static EditText txtemail,txtpassword;
-    //protected static String usernm, newuser;
+    private TextView valDiabetTV,valAsamuratTV,valKolestrolTV,txtUser,
+            resAsamUratTV, resDiabetesTV, resKolestrolTV;
+    private Integer irValue;
+    private long epoch;
+    private boolean read = true;
     private FirebaseAuth mAuth;
 
     @Override
@@ -37,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        resAsamUrat = findViewById(R.id.ResultAsamUrat);
-        resDiabetes = findViewById(R.id.ResultDiabetes);
-        resKolestrol = findViewById(R.id.ResultKolestrol);
+        resAsamUratTV = findViewById(R.id.ResultAsamUrat);
+        resDiabetesTV = findViewById(R.id.ResultDiabetes);
+        resKolestrolTV = findViewById(R.id.ResultKolestrol);
         txtUser = findViewById(R.id.txtNamaPengguna);
         btnDetailAsamurat = findViewById(R.id.DetailAsamUrat);
         btnDetailDiabetes = findViewById(R.id.DetailDiabetes);
@@ -49,19 +60,53 @@ public class MainActivity extends AppCompatActivity {
         btnPolaKolestrol = findViewById(R.id.PolaKolestrol);
         btnRiwayat = findViewById(R.id.riwayat);
         btnScan = findViewById(R.id.scan);
-        valDiabet = findViewById(R.id.ValueDiabetes);
-        valAsamurat = findViewById(R.id.ValueAsamurat);
-        valKolestrol = findViewById(R.id.ValueKolestrol);
+        valDiabetTV = findViewById(R.id.ValueDiabetes);
+        valAsamuratTV = findViewById(R.id.ValueAsamurat);
+        valKolestrolTV = findViewById(R.id.ValueKolestrol);
+
+        epoch = System.currentTimeMillis();
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault());
+        formattedDate = df.format(c);
 
         //Nama Pengguna
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("user").child(newuser).child("name");
+        DatabaseReference myRef = database.getReference("user").child(newuser);
+        DatabaseReference irv = database.getReference("reading").child("irValue");
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                usernm  = snapshot.getValue(String.class);
+                usernm  = snapshot.child("name").getValue(String.class);
                 txtUser.setText(usernm + " !");
+
+                asamUrat = snapshot.child("asamUrat").getValue(Integer.class);
+                diabetes = snapshot.child("diabetes").getValue(Integer.class);
+                colestrol = snapshot.child("kolestrol").getValue(Integer.class);
+
+                //if(kolestrol != null && asamUrat != null && diabetes != null){
+
+                    if (colestrol == 0){
+                        valKolestrolTV.setVisibility(View.GONE);
+                        resKolestrolTV.setVisibility(View.GONE);
+                    } else {
+                        valKolestrolTV.setVisibility(View.VISIBLE);
+                        resKolestrolTV.setVisibility(View.VISIBLE);
+                    }
+                    if (asamUrat == 0){
+                        valAsamuratTV.setVisibility(View.GONE);
+                        resAsamUratTV.setVisibility(View.GONE);
+                    } else {
+                        valAsamuratTV.setVisibility(View.VISIBLE);
+                        resAsamUratTV.setVisibility(View.VISIBLE);
+                    }
+                    if (diabetes == 0){
+                        valDiabetTV.setVisibility(View.GONE);
+                        resDiabetesTV.setVisibility(View.GONE);
+                    } else {
+                        valDiabetTV.setVisibility(View.VISIBLE);
+                        resDiabetesTV.setVisibility(View.VISIBLE);
+                    }
             }
 
             @Override
@@ -106,50 +151,132 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnScan.setOnClickListener(new View.OnClickListener() {
+        irv.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                getScanner();
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                irValue = snapshot.getValue(Integer.class);
+                btnScan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        read = true;
+                        if(irValue<90000){
+                            Toast.makeText(getApplicationContext(),
+                                            "Please put your finger in the right way on the scanner",
+                                            Toast.LENGTH_LONG)
+                                    .show();
+                        }else if(read){
+                            getScanner();
+                            read = false;
+                        }
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
+
+
+        getreset();
         getValAsamUrat();
         getValDiabetes();
         getValKolestrol();
 
-
     }
 
     private void getScanner(){
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef1 = database.getReference("reading");
 
-        DatabaseReference myRef = database.getReference("user").child(newuser).child("history")
-                                .child("Asam Urat");
-        myRef.setValue(ValueAsamurat);
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                asamUrat = snapshot.child("asamUrat").getValue(Integer.class);
+                diabetes = snapshot.child("gulaDarah").getValue(Integer.class);
+                colestrol = snapshot.child("kolestrol").getValue(Integer.class);
+            }
 
-        myRef = database.getReference("user").child(newuser).child("history").child("Diabetes");
-        myRef.setValue(ValueDiabetes);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        myRef = database.getReference("user").child(newuser).child("history").child("Kolestrol");
-        myRef.setValue(ValueKolestrol);
+            }
+        });
 
+        //READING
+        myRef1 = database.getReference("user").child(newuser).child("asamUrat");
+        myRef1.setValue(asamUrat);
+        myRef1 = database.getReference("user").child(newuser).child("diabetes");
+        myRef1.setValue(diabetes);
+        myRef1 = database.getReference("user").child(newuser).child("kolestrol");
+        myRef1.setValue(colestrol);
+        myRef1 = database.getReference("reading").child("status");
+        myRef1.setValue(0);
+
+        //HISTORY
+        myRef1 = database.getReference("user").child(newuser).child("history").child(""+epoch).child("asamurat");
+        if(asamUrat<=2){
+            myRef1.setValue("RENDAH");
+        } else if(asamUrat<=7.5){
+            myRef1.setValue("NORMAL");
+        } else {
+            myRef1.setValue("TINGGI");
+        }
+
+        myRef1 = database.getReference("user").child(newuser).child("history").child(""+epoch).child("guladarah");
+        if(diabetes<=70){
+            myRef1.setValue("RENDAH");
+        } else if(diabetes<=100){
+            myRef1.setValue("NORMAL");
+        } else {
+            myRef1.setValue("TINGGI");
+        }
+
+        myRef1 = database.getReference("user").child(newuser).child("history").child(""+epoch).child("kolestrol");
+        if(colestrol<=200){
+            myRef1.setValue("RENDAH");
+        } else if(colestrol<=239){
+            myRef1.setValue("NORMAL");
+        } else {
+            myRef1.setValue("TINGGI");
+        }
+
+        myRef1 = database.getReference("user").child(newuser).child("history").child(""+epoch).child("tanggal");
+        myRef1.setValue(formattedDate);
+
+
+    }
+
+    private void getreset(){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myref = database.getReference("user").child(newuser);
+
+        if(status == 1){
+            myref.child("asamUrat").setValue(0);
+            myref.child("diabetes").setValue(0);
+            myref.child("kolestrol").setValue(0);
+            myref.child("status").setValue(0);
+            status = 0;
+        }
     }
 
     private void getValAsamUrat()
     {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref = database.getReference("reading").child("asamUrat");
+        DatabaseReference myref = database.getReference("user").child(newuser).child("asamUrat");
 
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                ValueAsamurat = snapshot.getValue(Integer.class);
-                resAsamUrat.setText(String.valueOf(ValueAsamurat));
+                asamUrat = snapshot.getValue(Integer.class);
+                resAsamUratTV.setText(String.valueOf(asamUrat));
 
-                if (ValueAsamurat <= 2) {
-                    valAsamurat.setText("Rendah");
+                if (asamUrat <= 2) {
+                    valAsamuratTV.setText("Rendah");
                     btnPolaAsamurat.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -157,8 +284,8 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                     });
-                } else if (ValueAsamurat <= 7.5){
-                    valAsamurat.setText("Normal");
+                } else if (asamUrat <= 7.5){
+                    valAsamuratTV.setText("Normal");
                     btnPolaAsamurat.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -167,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    valAsamurat.setText("Tinggi");
+                    valAsamuratTV.setText("Tinggi");
                     btnPolaAsamurat.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -188,18 +315,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void getValDiabetes(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref = database.getReference("reading").child("gulaDarah");
-
+        DatabaseReference myref = database.getReference("user").child(newuser).child("diabetes");
 
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                ValueDiabetes = snapshot.getValue(Integer.class);
-                resDiabetes.setText(String.valueOf(ValueDiabetes));
+                diabetes = snapshot.getValue(Integer.class);
+                resDiabetesTV.setText(String.valueOf(diabetes));
 
-                if (ValueDiabetes <= 70) {
-                    valDiabet.setText("Rendah");
+                if (diabetes <= 70) {
+                    valDiabetTV.setText("Rendah");
                     btnPolaDiabetes.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -207,8 +333,8 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                     });
-                } else if (ValueDiabetes <= 100) {
-                    valDiabet.setText("Normal");
+                } else if (diabetes <= 100) {
+                    valDiabetTV.setText("Normal");
                     btnPolaDiabetes.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -217,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    valDiabet.setText("Tinggi");
+                    valDiabetTV.setText("Tinggi");
                     btnPolaDiabetes.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -226,7 +352,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
-
             }
 
             @Override
@@ -238,18 +363,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void getValKolestrol() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myref = database.getReference("reading").child("kolestrol");
+        DatabaseReference myref = database.getReference("user").child(newuser).child("kolestrol");
 
 
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                ValueKolestrol = snapshot.getValue(Integer.class);
-                resKolestrol.setText(String.valueOf(ValueKolestrol));
+                colestrol = snapshot.getValue(Integer.class);
+                resKolestrolTV.setText(String.valueOf(colestrol));
 
-                if (ValueKolestrol <= 200) {
-                    valKolestrol.setText("Rendah");
+                if (colestrol <= 200) {
+                    valKolestrolTV.setText("Rendah");
                     btnPolaKolestrol.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -257,8 +382,8 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(i);
                         }
                     });
-                } else if (ValueKolestrol <= 239) {
-                    valKolestrol.setText("Normal");
+                } else if (colestrol <= 239) {
+                    valKolestrolTV.setText("Normal");
                     btnPolaKolestrol.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -267,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 } else {
-                    valKolestrol.setText("Tinggi");
+                    valKolestrolTV.setText("Tinggi");
                     btnPolaKolestrol.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

@@ -9,8 +9,8 @@
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_about_asam_urat.xml" value="0.4" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_about_diabetes.xml" value="0.264" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_about_kolestrol.xml" value="0.4" />
-        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_history.xml" value="0.14175724637681159" />
-        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_main.xml" value="0.8" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_history.xml" value="0.176" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_main.xml" value="0.6349206349206349" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_otp.xml" value="0.264" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_asamurat_minus.xml" value="0.4" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_asamurat_normal.xml" value="0.536" />
@@ -22,9 +22,10 @@
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_kolestrol_normal.xml" value="0.15307971014492755" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_pola_kolestrol_plus.xml" value="0.264" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
-        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_sign_up.xml" value="0.2183406113537118" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_signup.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/activity_splash_screen.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/saddam.aldriansyah/AndroidStudioProjects/LetsEat/app/src/main/res/layout/item.xml" value="0.264" />
       </map>
     </option>
   </component>

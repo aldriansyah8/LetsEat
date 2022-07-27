@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -22,12 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText txtpassword, txtnama, txthandphone, txtemail;
     private TextView login;
-    private ImageButton bOtp;
+    private Button bRegister;
 
     private FirebaseAuth mAuth;
 
@@ -44,10 +44,10 @@ public class SignUpActivity extends AppCompatActivity {
         txtpassword = findViewById(R.id.txtPassword);
         txthandphone = findViewById(R.id.txtPassword);
         login = findViewById(R.id.txtMasuk);
-        bOtp = findViewById(R.id.btnOtp);
+        bRegister = findViewById(R.id.register);
 
         //Menuju Halaman OTP
-        bOtp.setOnClickListener(new View.OnClickListener() {
+        bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
@@ -86,11 +86,20 @@ public class SignUpActivity extends AppCompatActivity {
         myRef = database.getReference("user").child(newuser).child("password");
         myRef.setValue(password);
 
+        myRef = database.getReference("user").child(newuser).child("asamUrat");
+        myRef.setValue(0);
+
+        myRef = database.getReference("user").child(newuser).child("diabetes");
+        myRef.setValue(0);
+
+        myRef = database.getReference("user").child(newuser).child("kolestrol");
+        myRef.setValue(0);
+
 
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
-                            "Please enter yourname!!",
+                            "Please enter youremail!!",
                             Toast.LENGTH_LONG)
                     .show();
             return;

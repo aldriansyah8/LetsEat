@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -24,7 +26,8 @@ public class SignInActivity extends AppCompatActivity {
     private EditText txtemail, txtpassword;
     private TextView otp;
 
-    protected static String usernm, newuser;
+    protected static String usernm, newuser,formattedDate;
+    protected static Integer asamUrat, diabetes, colestrol, status;
 
     private FirebaseAuth mAuth;
 
@@ -66,6 +69,8 @@ public class SignInActivity extends AppCompatActivity {
         email = txtemail.getText().toString();
         password = txtpassword.getText().toString();
         newuser = email.substring(0,5);
+
+        status =1;
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
