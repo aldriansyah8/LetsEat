@@ -71,14 +71,17 @@ public class MainActivity extends AppCompatActivity {
 
         //Nama Pengguna
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("user").child(newuser);
         DatabaseReference irv = database.getReference("reading").child("irValue");
 
+        DatabaseReference myRef = database.getReference("user").child(newuser);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 usernm  = snapshot.child("name").getValue(String.class);
-                txtUser.setText(usernm + " !");
+
+                if (usernm != null) {
+                    txtUser.setText(usernm + " !");
+                }
 
                 asamUrat = snapshot.child("asamUrat").getValue(Integer.class);
                 diabetes = snapshot.child("diabetes").getValue(Integer.class);
