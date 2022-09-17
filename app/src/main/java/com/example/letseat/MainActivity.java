@@ -77,8 +77,11 @@ public class MainActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                // Nama Harus String
                 usernm  = snapshot.child("name").getValue(String.class);
 
+                //Deklarasi nama
                 if (usernm != null) {
                     txtUser.setText(usernm + " !");
                 }
